@@ -1,0 +1,31 @@
+<!--접속할 때 마다 특정 메세지와, 함께 몇번 접속하였는지 출력하는 Web 서비스 구현-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Counter</title>
+    <!-- h2 스타일 입히기 -->
+    <style>
+        h2 {text-align: center; color: blue}
+        p {text-align: center;}
+    </style>
+    <script>
+        function manageVisitCount(){
+            let visitCount = localStorage.getItem('visitCount');
+
+            if(visitCount) visitCount = parseInt(visitCount)+1;
+            else visitCount = 1;
+
+            localStorage.setItem('visitCount', visitCount);
+
+            document.getElementById('visitMessage').textContent = `You have visit this site ${visitCount} time(s).`;
+        }
+        window.onload = manageVisitCount;
+    </script>
+</head>
+<body>
+    <h2>Hello, Web User!</h2>
+    <p id="visitMessage"></p>
+</body>
+</html>
